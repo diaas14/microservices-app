@@ -11,15 +11,17 @@ const PostCreate = () => {
     setTitle("");
   };
   return (
-    <div className="container">
+    <div className="container my-3">
       <form onSubmit={onSubmit}>
-        <label>Add your post here: </label>
+        <label>Add your post here</label>
         <input
           className="form-control"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         ></input>
-        <button className="btn btn-primary">Post</button>
+        <button type="submit" className="btn btn-primary mt-2">
+          Post
+        </button>
       </form>
     </div>
   );

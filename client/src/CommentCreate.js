@@ -11,9 +11,9 @@ const CommentCreate = (props) => {
     setComment("");
   };
   return (
-    <div className="container">
+    <div className="container mt-3">
       <form onSubmit={submitHandler}>
-        <label>Write a comment:</label>
+        <label>Write a comment</label>
         <input
           className="form-control"
           value={comment}
@@ -21,7 +21,7 @@ const CommentCreate = (props) => {
             setComment(e.target.value);
           }}
         ></input>
-        <button className="btn btn-primary">Comment</button>
+        <button className="btn btn-primary mt-2">Comment</button>
       </form>
     </div>
   );

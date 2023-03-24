@@ -19,7 +19,7 @@ const CommentList = ({ comments }) => {
             break;
         }
         return (
-          <li key={comment.id} className="list-group-item">
+          <li key={comment.id} className="list-group-item card-text">
             {content}
           </li>
         );

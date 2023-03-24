@@ -15,8 +15,6 @@ const PostList = () => {
     fetchPosts();
   }, []);
 
-  console.log(posts);
-
   return (
     <div className="d-flex flex-row flex-wrap justify-content-between">
       {posts &&
@@ -28,9 +26,9 @@ const PostList = () => {
               style={{ width: "30%", margin: "10px" }}
             >
               <div className="card-body">
-                <h3>{post.title}</h3>
+                <h3 className="card-title">{post.title}</h3>
                 <CommentCreate postId={post.id} />
-                <h2>Comments</h2>
+                <h5 className="card-subtitle mt-3">Comments</h5>
                 <CommentList comments={post.comments} />
               </div>
             </div>

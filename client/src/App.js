@@ -4,11 +4,15 @@ import PostList from "./PostList";
 
 const App = () => {
   return (
-    <div>
-      <h1>Create Posts</h1>
-      <PostCreate />
-      <h1>Posts</h1>
-      <PostList />
+    <div className="container">
+      <div className="row">
+        <h1 className="text-center my-4">Create Posts</h1>
+        <PostCreate />
+      </div>
+      <div className="row">
+        <h1 className="text-center my-4">Posts</h1>
+        <PostList />
+      </div>
     </div>
   );
 };
