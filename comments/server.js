@@ -10,11 +10,6 @@ app.use(cors());
 
 const commentsByPostId = {};
 
-app.get("/posts/:id/comments", (req, res) => {
-  const comments = commentsByPostId[req.params.id] || Array();
-  res.send(comments);
-});
-
 app.post("/posts/:id/comments", async (req, res) => {
   const id = randomBytes(4).toString("hex");
   const { content } = req.body;
@@ -34,12 +29,10 @@ app.post("/posts/:id/comments", async (req, res) => {
     .catch((err) => {
       console.log(err.message);
     });
-  console.log("---Comment created---");
   res.status(201).send(comments);
 });
 
 app.post("/events", async (req, res) => {
-  console.log(`Event received: ${req.body.type}`);
   const { type, data } = req.body;
   if (type === "CommentModerated") {
     const comments = commentsByPostId[data.postId];

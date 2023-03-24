@@ -34,12 +34,10 @@ const eventHandler = (type, data) => {
 };
 
 app.get("/posts", (req, res) => {
-  console.log(posts);
   res.send(posts);
 });
 
 app.post("/events", (req, res) => {
-  console.log(`Event received: ${req.body.type}`);
   const { type, data } = req.body;
   eventHandler(type, data);
   res.send({});
@@ -50,7 +48,6 @@ app.listen(4002, async () => {
   try {
     const res = await axios.get("http://localhost:4005/events");
     for (let event of res.data) {
-      console.log(`Processing event of type: ${event.type}`);
       eventHandler(event.type, event.data);
     }
   } catch (err) {

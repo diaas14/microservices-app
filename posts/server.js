@@ -10,12 +10,6 @@ app.use(cors());
 
 const posts = {};
 
-// get all posts
-app.get("/posts", (req, res) => {
-  res.send(posts);
-});
-
-// post a post
 app.post("/posts", async (req, res) => {
   const id = randomBytes(4).toString("hex");
   const { title } = req.body;
@@ -35,7 +29,6 @@ app.post("/posts", async (req, res) => {
 });
 
 app.post("/events", async (req, res) => {
-  console.log(`Event received: ${req.body.type}`);
   res.send({});
 });
 

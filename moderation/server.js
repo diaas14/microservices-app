@@ -8,7 +8,6 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.post("/events", async (req, res) => {
-  console.log(`Event received: ${req.body.type}`);
   const { type, data } = req.body;
   if (type === "CommentCreated") {
     const status = data.content.includes("orange") ? "declined" : "approved";
