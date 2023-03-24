@@ -4,7 +4,7 @@ import CommentCreate from "./CommentCreate";
 import CommentList from "./CommentList";
 
 const PostList = () => {
-  const [posts, setPosts] = useState({});
+  const [posts, setPosts] = useState(undefined);
 
   const fetchPosts = async () => {
     const res = await axios.get("http://localhost:4002/posts");
@@ -14,25 +14,26 @@ const PostList = () => {
   useEffect(() => {
     fetchPosts();
   }, []);
-
   return (
     <div className="d-flex flex-row flex-wrap justify-content-between">
-      {Object.values(posts).map((post) => {
-        return (
-          <div
-            key={post.id}
-            className="card"
-            style={{ width: "30%", margin: "10px" }}
-          >
-            <div className="card-body">
-              <h3>{post.title}</h3>
-              <CommentCreate postId={post.id} />
-              <h2>Comments</h2>
-              <CommentList postId={post.comments} />
+      {posts &&
+        Object.values(posts).map((post) => {
+          return (
+            <div
+              key={post.id}
+              className="card"
+              style={{ width: "30%", margin: "10px" }}
+            >
+              <div className="card-body">
+                <h3>{post.title}</h3>
+                <CommentCreate postId={post.id} />
+                <h2>Comments</h2>
+                <CommentList comments={post.comments} />
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      {!posts && <h3>loading...</h3>}
     </div>
   );
 };
