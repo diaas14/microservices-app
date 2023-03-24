@@ -15,6 +15,8 @@ const CommentList = ({ comments }) => {
           case "declined":
             content = "This comment is flagged as inappropriate by moderator";
             break;
+          default:
+            break;
         }
         return (
           <li key={comment.id} className="list-group-item">
