@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: query-posts-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: query-posts
+  template:
+    metadata:
+      labels:
+        app: query-posts
+    spec:
+      containers:
+        - name: query-posts
+          image: diaa14/query-posts
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: query-clusterip-serv
+spec:
+  selector:
+    app: query-posts
+  ports:
+    - name: query-posts
+      protocol: TCP
+      port: 4002
+      targetPort: 4002
