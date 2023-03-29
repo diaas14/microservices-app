@@ -5,7 +5,7 @@ const CommentCreate = (props) => {
   const [comment, setComment] = useState("");
   const submitHandler = async (e) => {
     e.preventDefault();
-    await axios.post(`http://localhost:4001/posts/${props.postId}/comments`, {
+    await axios.post(`http://posts.com/posts/${props.postId}/comments`, {
       content: comment,
     });
     setComment("");
