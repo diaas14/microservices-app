@@ -7,10 +7,13 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+const moderate = (content) =>
+  content.toLowerCase().includes("fish") ? "declined" : "approved";
+
 app.post("/events", async (req, res) => {
   const { type, data } = req.body;
   if (type === "CommentCreated") {
-    const status = data.content.includes("orange") ? "declined" : "approved";
+    const status = moderate(data.content);
     await axios
       .post("http://event-bus-serv:4005/events", {
         type: "CommentModerated",
